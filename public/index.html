@@ -24,6 +24,11 @@
                     <label for="product-price">Price</label>
                     <input type="number" class="form-control" id="product-price" required min="0" step="0.01" ng-model="formItem.price">
                 </div>
+                <div class="form-group">
+                    <label for="product-quantity">Quantity</label>
+                    <input type="number" class="form-control" id="product-quantity"
+                      ng-model="formItem.quantity">
+                </div>
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             </form>
 
@@ -33,6 +38,7 @@
                         <th>Product</th>
                         <th>Price</th>
                         <th>Actions</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +46,7 @@
                         <td>{{item.product}}</td>
                         <td>{{item.price | currency}}</td>
                         <td><button type="button" class="btn btn-default" ng-click="deleteItem(item)">Delete</button></td>
+                        <td>{{item.quantity}}</td>
                     </tr>
                 </tbody>
             </table>

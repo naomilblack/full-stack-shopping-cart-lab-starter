@@ -6,8 +6,14 @@ app.service("cartService", function($http) {
     // entire response object.)
     this.getAllItems = function() {
         // GET /api/items
+        return $http.get('/api/items').then(function(response){
+          return response.data;
+        }); // create another promise that has only data not the whole response
+
+
 
         // TODO Make the HTTP request to the server and return a promise.
+
     };
 
     // Call the Node Server API to add an item.
@@ -18,6 +24,9 @@ app.service("cartService", function($http) {
     this.addItem = function(item) {
         // POST /api/items
         // body -> { product: "...", price: ... }
+        return $http.post('/api/items',{product:item.product, price:item.price, quantity:item.quantity}).then(function(response){
+          return response.data;
+    });
 
         // TODO Make the HTTP request to the server and return a promise.
     };
@@ -28,6 +37,9 @@ app.service("cartService", function($http) {
     // matter what the value of the promise is.
     this.deleteItem = function(itemId) {
         // DELETE /api/items/{ID}
+        return $http.delete('/api/items/' + itemId).then(function(response){
+          return response;
+        });
 
         // TODO Make the HTTP request to the server and return a promise.
     };
